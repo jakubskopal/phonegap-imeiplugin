@@ -28,7 +28,7 @@ public class imeiplugin extends CordovaPlugin {
             TelephonyManager tManager = (TelephonyManager)cordova.getActivity().getSystemService(context.TELEPHONY_SERVICE);
             callbackContext.success(tManager.getDeviceId());
         } catch (Exception e) {
-            callbackContext.success((byte[]) null);
+            callbackContext.success("");
         }
     }
 

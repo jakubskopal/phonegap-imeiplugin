@@ -22,10 +22,14 @@ public class imeiplugin extends CordovaPlugin {
     }
 
     public void DeviceImeiNumber(CallbackContext callbackContext) {
-        Context context=this.cordova.getActivity().getApplicationContext();
+        try {
+            Context context=this.cordova.getActivity().getApplicationContext();
 
-        TelephonyManager tManager = (TelephonyManager)cordova.getActivity().getSystemService(context.TELEPHONY_SERVICE);
-        callbackContext.success(tManager.getDeviceId());
+            TelephonyManager tManager = (TelephonyManager)cordova.getActivity().getSystemService(context.TELEPHONY_SERVICE);
+            callbackContext.success(tManager.getDeviceId());
+        } catch (Exception e) {
+            callbackContext.success(null);
+        }
     }
 
     private void getImei(String message, CallbackContext callbackContext) {
